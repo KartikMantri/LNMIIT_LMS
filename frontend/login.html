@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — LNMIIT Library Management System</title>
+  <meta name="description" content="Login to LNMIIT Library Management System to access your account." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <main class="auth-page">
+    <div class="auth-card">
+
+      <!-- Logo -->
+      <div class="auth-logo">
+        <div class="logo-icon">📚</div>
+        <div>
+          <div style="font-size:0.95rem;">LNMIIT Library</div>
+          <div style="font-size:0.7rem;font-weight:400;color:var(--text-muted);">Management System</div>
+        </div>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">Sign in to your account to continue</p>
+
+      <!-- Alert Box -->
+      <div id="alert-box"></div>
+
+      <!-- Form -->
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="userId">User ID</label>
+          <div class="input-icon-wrapper">
+            <span class="icon">👤</span>
+            <input
+              type="text" id="userId" name="userId"
+              class="form-control" placeholder="Roll No / Faculty ID / admin"
+              autocomplete="username" required
+            />
+          </div>
+          <span class="form-error" id="userid-error">Please enter your User ID.</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="role">Login As</label>
+          <div class="input-icon-wrapper">
+            <span class="icon">🎭</span>
+            <select id="role" name="role" class="form-control" required style="padding-left:42px; appearance:none; cursor:pointer;">
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+              <option value="admin">Admin</option>
+            </select>
+            <span class="icon-right" style="pointer-events:none; font-size:0.8rem;">▼</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <div class="input-icon-wrapper">
+            <span class="icon">🔒</span>
+            <input
+              type="password" id="password" name="password"
+              class="form-control" placeholder="Enter your password"
+              autocomplete="current-password" required
+            />
+            <span class="icon-right" id="toggle-password" title="Show/Hide password">👁️</span>
+          </div>
+          <span class="form-error" id="password-error">Password is required.</span>
+        </div>
+
+        <div class="flex justify-between items-center mb-2" style="margin-bottom:20px;">
+          <label style="display:flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--text-secondary);cursor:pointer;">
+            <input type="checkbox" id="remember-me" style="accent-color:var(--accent-primary);" />
+            Remember me
+          </label>
+          <a href="#" style="font-size:0.875rem;">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full btn-lg" id="login-btn">
+          <span id="btn-text">Sign In</span>
+          <span id="btn-spinner" class="spinner" style="display:none;"></span>
+        </button>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="register.html">Create one</a>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/theme.js"></script>
+</body>
+</html>

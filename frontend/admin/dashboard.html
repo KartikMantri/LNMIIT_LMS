@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — LNMIIT Library Management System</title>
+  <meta name="description" content="Admin overview dashboard for the LNMIIT Library Management System." />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon">📚</div>
+        <div>
+          <div style="font-size:0.85rem;">LNMIIT LMS</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);font-weight:400;">Admin Panel</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-label">Overview</div>
+        <a href="dashboard.html" class="sidebar-item active">
+          <span class="icon">📊</span> Dashboard
+        </a>
+
+        <div class="sidebar-label" style="margin-top:8px;">User Management</div>
+        <a href="users.html" class="sidebar-item">
+          <span class="icon">👥</span> All Users
+        </a>
+        <a href="users.html?role=student" class="sidebar-item">
+          <span class="icon">🎓</span> Students
+        </a>
+        <a href="users.html?role=faculty" class="sidebar-item">
+          <span class="icon">👨‍🏫</span> Faculty
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-item" style="margin-bottom:6px;">
+          <span class="icon">👤</span>
+          <span id="sidebar-user-name" style="font-size:0.82rem;"></span>
+        </div>
+        <button class="btn btn-secondary btn-sm btn-full" id="logout-btn">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- Top Bar -->
+      <div class="flex justify-between items-center" style="margin-bottom:32px;">
+        <div>
+          <div style="font-family:var(--font-head);font-size:1.4rem;font-weight:700;">
+            Dashboard
+          </div>
+          <div style="color:var(--text-muted);font-size:0.85rem;margin-top:2px;" id="greeting"></div>
+        </div>
+        <div class="avatar" id="nav-avatar" style="width:40px;height:40px;font-size:0.95rem;"></div>
+      </div>
+
+      <!-- Alert -->
+      <div id="alert-box"></div>
+
+      <!-- Stat Cards -->
+      <div class="grid-4" style="margin-bottom:32px;">
+        <div class="stat-card">
+          <div class="stat-icon blue">👥</div>
+          <div>
+            <div class="stat-value" id="stat-total">—</div>
+            <div class="stat-label">Total Users</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple">🎓</div>
+          <div>
+            <div class="stat-value" id="stat-students">—</div>
+            <div class="stat-label">Students</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">👨‍🏫</div>
+          <div>
+            <div class="stat-value" id="stat-faculty">—</div>
+            <div class="stat-label">Faculty</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange">✅</div>
+          <div>
+            <div class="stat-value" id="stat-active">—</div>
+            <div class="stat-label">Active Users</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Users Table -->
+      <div class="table-wrapper">
+        <div class="table-header">
+          <div>
+            <div class="card-title">Recent Registrations</div>
+            <div class="card-subtitle">Latest users who joined the system</div>
+          </div>
+          <a href="users.html" class="btn btn-secondary btn-sm">View All →</a>
+        </div>
+
+        <div id="table-body-wrapper">
+          <div class="empty-state" id="table-loader">
+            <div class="spinner" style="width:30px;height:30px;margin:0 auto;"></div>
+            <p style="margin-top:12px;">Loading users...</p>
+          </div>
+          <table id="recent-table" style="display:none;">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="recent-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin/dashboard.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>

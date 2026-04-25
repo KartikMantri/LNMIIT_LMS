@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manage Users — LNMIIT Library Management System</title>
+  <meta name="description" content="Admin panel to manage all users of the LNMIIT Library Management System." />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <div class="bg-pattern"></div>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="logo-icon">📚</div>
+        <div>
+          <div style="font-size:0.85rem;">LNMIIT LMS</div>
+          <div style="font-size:0.68rem;color:var(--text-muted);font-weight:400;">Admin Panel</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="sidebar-label">Overview</div>
+        <a href="dashboard.html" class="sidebar-item">
+          <span class="icon">📊</span> Dashboard
+        </a>
+        <div class="sidebar-label" style="margin-top:8px;">User Management</div>
+        <a href="users.html" class="sidebar-item active">
+          <span class="icon">👥</span> All Users
+        </a>
+        <a href="users.html?role=student" class="sidebar-item" id="link-students">
+          <span class="icon">🎓</span> Students
+        </a>
+        <a href="users.html?role=faculty" class="sidebar-item" id="link-faculty">
+          <span class="icon">👨‍🏫</span> Faculty
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="sidebar-item" style="margin-bottom:6px;">
+          <span class="icon">👤</span>
+          <span id="sidebar-user-name" style="font-size:0.82rem;"></span>
+        </div>
+        <button class="btn btn-secondary btn-sm btn-full" id="logout-btn">🚪 Logout</button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <div class="flex justify-between items-center" style="margin-bottom:28px;">
+        <div>
+          <div style="font-family:var(--font-head);font-size:1.4rem;font-weight:700;">User Management</div>
+          <div style="color:var(--text-muted);font-size:0.85rem;margin-top:2px;" id="page-subtitle">
+            All registered users
+          </div>
+        </div>
+        <div class="avatar" id="nav-avatar" style="width:40px;height:40px;font-size:0.95rem;"></div>
+      </div>
+
+      <div id="alert-box"></div>
+
+      <!-- Table -->
+      <div class="table-wrapper">
+        <div class="table-header">
+          <!-- Search -->
+          <div class="search-bar">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="search-input" placeholder="Search by name or email..." />
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <select id="filter-role" class="form-control" style="width:140px;padding:8px 12px;font-size:0.875rem;">
+              <option value="">All Roles</option>
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+              <option value="admin">Admin</option>
+            </select>
+            <select id="filter-status" class="form-control" style="width:140px;padding:8px 12px;font-size:0.875rem;">
+              <option value="">All Status</option>
+              <option value="true">Active</option>
+              <option value="false">Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Table Body -->
+        <div id="table-body-wrapper">
+          <div class="empty-state" id="table-loader">
+            <div class="spinner" style="width:30px;height:30px;margin:0 auto;"></div>
+            <p style="margin-top:12px;">Loading users...</p>
+          </div>
+          <table id="users-table" style="display:none;">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>User ID</th>
+                <th>Status</th>
+                <th>Joined</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="table-footer">
+          <div id="pagination-info" style="font-size:0.8rem;color:var(--text-muted);">
+            Showing 0 of 0 users
+          </div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+
+      <!-- Delete Confirm Modal -->
+      <div class="modal-overlay" id="delete-modal" style="display:none;">
+        <div class="modal">
+          <div class="modal-header">
+            <div class="modal-title">⚠️ Confirm Delete</div>
+            <button class="modal-close" id="close-modal">✕</button>
+          </div>
+          <p style="color:var(--text-secondary);font-size:0.9rem;">
+            Are you sure you want to permanently delete <strong id="delete-user-name"></strong>?
+            This action cannot be undone.
+          </p>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" id="cancel-delete">Cancel</button>
+            <button class="btn btn-danger" id="confirm-delete">
+              <span id="del-text">Delete</span>
+              <span id="del-spinner" class="spinner" style="display:none;"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/api.js"></script>
+  <script src="../js/admin/users.js"></script>
+  <script src="../js/theme.js"></script>
+</body>
+</html>
