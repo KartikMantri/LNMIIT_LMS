@@ -3,7 +3,7 @@
  * Handles all fetch calls to the backend and JWT token management.
  */
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://lnmiit-lms.onrender.com/api';
 
 // --- Token Management ---
 const Auth = {
