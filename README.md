@@ -90,9 +90,8 @@ Now, open your browser and navigate to `http://localhost:3000/login` to access t
 
 ## 🤝 Contributing
 Since this is a specific module for the LNMIIT Library Management System, Its contributors include
----
-Aarohi Sinha
----
-Nandini Sharma
----
+```
+Aarohi Sinha, 
+Nandini Sharma, 
 Garv Jain
+```
