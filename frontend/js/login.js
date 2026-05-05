@@ -20,7 +20,7 @@ const pwdInput    = document.getElementById('password');
 togglePwd.addEventListener('click', () => {
   const isHidden = pwdInput.type === 'password';
   pwdInput.type = isHidden ? 'text' : 'password';
-  togglePwd.textContent = isHidden ? '🙈' : '👁️';
+  togglePwd.textContent = isHidden ? 'Hide' : 'Show';
 });
 
 // Show inline alert

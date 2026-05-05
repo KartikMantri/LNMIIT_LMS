@@ -3,7 +3,6 @@
     { "source": "/login", "destination": "/login.html" },
     { "source": "/register", "destination": "/register.html" },
     { "source": "/profile", "destination": "/profile.html" },
-    { "source": "/change-password", "destination": "/change-password.html" },
     { "source": "/admin/dashboard", "destination": "/admin/dashboard.html" },
     { "source": "/admin/users", "destination": "/admin/users.html" },
     { "source": "/admin/user-detail", "destination": "/admin/user-detail.html" }

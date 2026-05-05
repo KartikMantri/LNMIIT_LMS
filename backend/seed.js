@@ -4,9 +4,11 @@ const User = require('./models/User');
 
 const seedAdmin = async () => {
   try {
+
     await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+
     });
 
     const adminExists = await User.findOne({ userId: 'admin' });
@@ -34,3 +36,5 @@ const seedAdmin = async () => {
 };
 
 seedAdmin();
+
+//seed.js -> creates the first admin 

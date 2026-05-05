@@ -126,12 +126,7 @@ const loginUser = async (req, res) => {
   }
 };
 
-// @desc    Logout user (clear token client side usually, but API can respond)
-// @route   POST /api/users/logout
-// @access  Private
-const logoutUser = async (req, res) => {
-  res.json({ success: true, message: 'Logged out successfully' });
-};
+
 
 // @desc    Get user profile
 // @route   GET /api/users/me
@@ -187,30 +182,7 @@ const updateMyProfile = async (req, res) => {
   }
 };
 
-// @desc    Change password
-// @route   PUT /api/users/change-password
-// @access  Private
-const changePassword = async (req, res) => {
-  try {
-    const { currentPassword, newPassword } = req.body;
-    
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({ success: false, message: 'Please provide current and new password' });
-    }
 
-    const user = await User.findById(req.user._id);
-
-    if (user && (await user.matchPassword(currentPassword))) {
-      user.password = newPassword;
-      await user.save();
-      res.json({ success: true, message: 'Password updated successfully' });
-    } else {
-      res.status(401).json({ success: false, message: 'Invalid current password' });
-    }
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
 
 // @desc    Admin issues a book to a specific user
 // @route   POST /api/users/:id/issue-book
@@ -445,10 +417,8 @@ const updateIssuedBookStatus = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
-  logoutUser,
   getMyProfile,
   updateMyProfile,
-  changePassword,
   issueBookForUser,
   updateIssuedBookStatus,
   getUsers,

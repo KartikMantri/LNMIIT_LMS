@@ -4,10 +4,8 @@ const router = express.Router();
 const {
   registerUser,
   loginUser,
-  logoutUser,
   getMyProfile,
   updateMyProfile,
-  changePassword,
   issueBookForUser,
   updateIssuedBookStatus,
   getUsers,
@@ -26,10 +24,9 @@ router.post('/register', registerUser);
 router.post('/login', loginUser);
 
 // Protected Auth Routes
-router.post('/logout', protect, logoutUser);
 router.get('/me', protect, getMyProfile);
 router.put('/me', protect, updateMyProfile);
-router.put('/change-password', protect, changePassword);
+
 
 // Protected Admin/Faculty Routes
 router.get('/search', protect, authorize('admin', 'faculty'), searchUsers);

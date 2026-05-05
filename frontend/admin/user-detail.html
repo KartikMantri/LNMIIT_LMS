@@ -15,74 +15,73 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-brand">
-        <div class="logo-icon">📚</div>
+        <div class="logo-icon">LMS</div>
         <div>
           <div style="font-size:0.85rem;">LNMIIT LMS</div>
-          <div style="font-size:0.68rem;color:var(--text-muted);font-weight:400;">Admin Panel</div>
+          <div style="font-size:0.68rem;color:var(--muted-foreground);font-weight:400;">Admin Panel</div>
         </div>
       </div>
       <nav class="sidebar-nav">
         <div class="sidebar-label">Overview</div>
         <a href="dashboard.html" class="sidebar-item">
-          <span class="icon">📊</span> Dashboard
+          Dashboard
         </a>
         <div class="sidebar-label" style="margin-top:8px;">User Management</div>
         <a href="users.html" class="sidebar-item active">
-          <span class="icon">👥</span> All Users
+          All Users
         </a>
       </nav>
       <div class="sidebar-footer">
         <div class="sidebar-item" style="margin-bottom:6px;">
-          <span class="icon">👤</span>
           <span id="sidebar-user-name" style="font-size:0.82rem;"></span>
         </div>
-        <button class="btn btn-secondary btn-sm btn-full" id="logout-btn">🚪 Logout</button>
+        <button class="btn btn-secondary btn-sm btn-full" id="logout-btn">Logout</button>
       </div>
     </aside>
 
     <!-- Main Content -->
     <main class="main-content">
 
-      <div style="margin-bottom:24px;">
-        <a href="users.html" style="font-size:0.875rem;color:var(--text-muted);">← Back to Users</a>
+      <div style="margin-bottom:20px;">
+        <a href="users.html" style="font-size:0.875rem;color:var(--muted-foreground);">← Back to Users</a>
       </div>
 
-      <div class="flex justify-between items-center" style="margin-bottom:32px;">
+      <div class="flex justify-between items-center" style="margin-bottom:28px;">
         <div>
-          <div style="font-family:var(--font-head);font-size:1.4rem;font-weight:700;">User Details</div>
-          <div style="color:var(--text-muted);font-size:0.85rem;margin-top:2px;">
+          <div style="font-size:1.3rem;font-weight:700;">User Details</div>
+          <div style="color:var(--muted-foreground);font-size:0.85rem;margin-top:2px;">
             Manage profile and access settings
           </div>
         </div>
-        <div class="avatar" id="nav-avatar" style="width:40px;height:40px;font-size:0.95rem;"></div>
+        <div class="avatar" id="nav-avatar" style="width:38px;height:38px;font-size:0.85rem;"></div>
       </div>
 
       <div id="alert-box"></div>
 
       <div id="loader" class="empty-state">
-        <div class="spinner" style="width:30px;height:30px;margin:0 auto;"></div>
+        <div class="spinner" style="width:28px;height:28px;margin:0 auto;"></div>
         <p style="margin-top:12px;">Loading user details...</p>
       </div>
 
-      <div id="content-area" class="grid-2" style="gap:28px;align-items:start;display:none;">
+      <div id="content-area" class="grid-2" style="gap:24px;align-items:start;display:none;">
 
         <!-- Info Card -->
         <div class="card">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
-            <div style="display:flex;align-items:center;gap:16px;">
-              <div class="avatar-preview" id="user-avatar" style="width:64px;height:64px;font-size:1.4rem;">?</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <div class="avatar-preview" id="user-avatar" style="width:56px;height:56px;font-size:1.2rem;">?</div>
               <div>
-                <div style="font-size:1.1rem;font-weight:700;" id="user-name">Loading...</div>
-                <div style="color:var(--text-secondary);font-size:0.85rem;" id="user-email">...</div>
+                <div style="font-size:1rem;font-weight:700;" id="user-name">Loading...</div>
+                <div style="color:var(--muted-foreground);font-size:0.85rem;" id="user-email">...</div>
               </div>
             </div>
-            <div id="user-badges" style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;"></div>
+            <div id="user-badges" style="display:flex;flex-direction:column;gap:5px;align-items:flex-end;"></div>
           </div>
 
-          <div style="display:grid;gap:14px;">
+          <div style="display:grid;gap:12px;">
             <div class="info-row">
               <span class="info-label">User ID</span>
-              <span id="info-id" class="info-value" style="font-family:monospace;font-size:0.8rem;color:var(--text-muted);"></span>
+              <span id="info-id" class="info-value" style="font-family:monospace;font-size:0.8rem;color:var(--muted-foreground);"></span>
             </div>
             <div class="info-row" id="userid-row" style="display:none;">
               <span class="info-label" id="info-userid-label">User ID</span>
@@ -105,7 +104,7 @@
 
         <!-- Edit Form -->
         <div class="card">
-          <div class="card-title" style="margin-bottom:20px;">Edit User Settings</div>
+          <div class="card-title" style="margin-bottom:18px;">Edit User Settings</div>
           
           <form id="edit-user-form" novalidate>
             <div class="form-group">
@@ -142,19 +141,19 @@
               <input type="text" id="edit-address" class="form-control" />
             </div>
 
-            <button type="submit" class="btn btn-primary" id="save-btn" style="margin-top:10px;">
+            <button type="submit" class="btn btn-primary" id="save-btn" style="margin-top:8px;">
               <span id="save-text">Update User</span>
               <span id="save-spinner" class="spinner" style="display:none;"></span>
             </button>
           </form>
 
           <!-- Danger Zone -->
-          <div style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border-color);">
-            <div style="font-size:0.9rem;font-weight:600;color:var(--danger);margin-bottom:12px;">Danger Zone</div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px;background:rgba(248,113,113,0.08);border:1px solid rgba(248,113,113,0.2);border-radius:var(--radius-sm);">
+          <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border);">
+            <div style="font-size:0.875rem;font-weight:600;color:var(--destructive);margin-bottom:10px;">Danger Zone</div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px;background:#fde8e8;border:1px solid #f5c6c6;border-radius:var(--radius);">
               <div>
                 <div style="font-weight:600;font-size:0.875rem;">Delete Account</div>
-                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">Permanently remove this user.</div>
+                <div style="font-size:0.75rem;color:var(--muted-foreground);margin-top:2px;">Permanently remove this user.</div>
               </div>
               <button class="btn btn-danger btn-sm" id="delete-btn">Delete</button>
             </div>
@@ -165,34 +164,34 @@
       </div>
 
       <!-- Issued Books Section (only for student/faculty) -->
-      <div id="issued-books-section" style="display:none; margin-top:28px;">
+      <div id="issued-books-section" style="display:none; margin-top:24px;">
         <div class="card">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;">
             <div class="card-title" style="margin-bottom:0;">Issued Books</div>
-            <span id="book-limit-badge" style="font-size:0.78rem; padding:4px 10px; background:var(--muted); border-radius:20px; color:var(--muted-foreground); font-weight:500;"></span>
+            <span id="book-limit-badge" style="font-size:0.75rem; padding:3px 8px; background:var(--muted); border-radius:3px; color:var(--muted-foreground); font-weight:500;"></span>
           </div>
 
           <div class="table-responsive">
             <table style="width:100%; border-collapse:collapse;" id="issued-books-table">
               <thead>
-                <tr style="border-bottom:2px solid var(--border); text-align:left;">
-                  <th style="padding:12px; color:var(--muted-foreground); font-weight:500; font-size:0.82rem;">#</th>
-                  <th style="padding:12px; color:var(--muted-foreground); font-weight:500; font-size:0.82rem;">Book Title</th>
-                  <th style="padding:12px; color:var(--muted-foreground); font-weight:500; font-size:0.82rem;">Issue Date</th>
-                  <th style="padding:12px; color:var(--muted-foreground); font-weight:500; font-size:0.82rem;">Return Date</th>
-                  <th style="padding:12px; color:var(--muted-foreground); font-weight:500; font-size:0.82rem;">Status</th>
+                <tr style="border-bottom:1px solid var(--border); text-align:left;">
+                  <th style="padding:10px 12px; color:var(--muted-foreground); font-weight:600; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">#</th>
+                  <th style="padding:10px 12px; color:var(--muted-foreground); font-weight:600; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">Book Title</th>
+                  <th style="padding:10px 12px; color:var(--muted-foreground); font-weight:600; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">Issue Date</th>
+                  <th style="padding:10px 12px; color:var(--muted-foreground); font-weight:600; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">Return Date</th>
+                  <th style="padding:10px 12px; color:var(--muted-foreground); font-weight:600; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em;">Status</th>
                 </tr>
               </thead>
               <tbody id="issued-books-body"></tbody>
             </table>
           </div>
-          <div id="no-books-msg" style="text-align:center; padding:32px; color:var(--muted-foreground); display:none;">
-            📚 No books currently issued to this user.
+          <div id="no-books-msg" style="text-align:center; padding:28px; color:var(--muted-foreground); display:none;">
+            No books currently issued to this user.
           </div>
 
           <!-- Admin Issue Book Form -->
-          <div style="margin-top:28px; padding-top:24px; border-top:1px solid var(--border);">
-            <div style="font-weight:600; font-size:0.95rem; margin-bottom:16px;">Issue a Book</div>
+          <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+            <div style="font-weight:600; font-size:0.9rem; margin-bottom:14px;">Issue a Book</div>
             <form id="admin-issue-form" novalidate style="display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;">
               <div class="form-group" style="margin-bottom:0; flex:2; min-width:200px;">
                 <label class="form-label" for="admin-issue-title">Book Title</label>
@@ -211,7 +210,7 @@
                 </select>
               </div>
               <button type="submit" class="btn btn-primary" id="admin-issue-btn" style="height:42px; white-space:nowrap;">
-                📗 Issue Book
+                Issue Book
               </button>
             </form>
           </div>
@@ -222,15 +221,15 @@
   </div>
 
   <style>
-    .info-row { display:flex; justify-content:space-between; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--border-color); }
+    .info-row { display:flex; justify-content:space-between; align-items:flex-start; padding:10px 0; border-bottom:1px solid var(--border); }
     .info-row:last-child { border-bottom:none; }
-    .info-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); flex-shrink:0; margin-right:16px; }
-    .info-value { font-size:0.875rem; color:var(--text-primary); text-align:right; }
+    .info-label { font-size:0.72rem; font-weight:600; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted-foreground); flex-shrink:0; margin-right:16px; }
+    .info-value { font-size:0.875rem; color:var(--foreground); text-align:right; }
   </style>
 
   <div id="toast-container" class="toast-container"></div>
   <script src="../js/api.js"></script>
   <script src="../js/admin/user-detail.js"></script>
-  <script src="../js/theme.js"></script>
+
 </body>
 </html>

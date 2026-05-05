@@ -11,7 +11,7 @@ document.getElementById('nav-avatar').textContent = getInitials(user?.name || 'A
 // Greeting
 const hour = new Date().getHours();
 const greet = hour < 12 ? 'Good morning' : hour < 17 ? 'Good afternoon' : 'Good evening';
-document.getElementById('greeting').textContent = `${greet}, ${user?.name?.split(' ')[0] || 'Admin'} 👋`;
+document.getElementById('greeting').textContent = `${greet}, ${user?.name?.split(' ')[0] || 'Admin'}`;
 
 // Logout
 document.getElementById('logout-btn').addEventListener('click', () => Auth.logout());
@@ -56,7 +56,7 @@ async function loadDashboard() {
 
   // Populate table
   if (!users.length) {
-    loader.innerHTML = `<div class="empty-state"><div class="empty-icon">📭</div><p>No users registered yet.</p></div>`;
+    loader.innerHTML = `<div class="empty-state"><div class="empty-icon"></div><p>No users registered yet.</p></div>`;
     return;
   }
 

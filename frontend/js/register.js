@@ -11,7 +11,6 @@ const roleSelect = document.getElementById('role');
 const userIdGroup  = document.getElementById('userid-group');
 const userIdLabel  = document.getElementById('userid-label');
 const userIdInput  = document.getElementById('userId');
-const userIdIcon   = document.getElementById('userid-icon');
 
 // Show and configure User ID field based on role
 roleSelect.addEventListener('change', () => {
@@ -20,23 +19,14 @@ roleSelect.addEventListener('change', () => {
   if (role === 'student') {
     userIdLabel.textContent = 'Roll Number';
     userIdInput.placeholder = 'e.g. 24UCS246';
-    userIdIcon.textContent = '🎓';
   } else if (role === 'faculty') {
     userIdLabel.textContent = 'Faculty ID';
     userIdInput.placeholder = 'e.g. CS101';
-    userIdIcon.textContent = '👨‍🏫';
   } else {
     userIdGroup.style.display = 'none';
   }
 });
 
-// Toggle password
-document.getElementById('toggle-pwd').addEventListener('click', function () {
-  const pwd = document.getElementById('password');
-  const isHidden = pwd.type === 'password';
-  pwd.type = isHidden ? 'text' : 'password';
-  this.textContent = isHidden ? '🙈' : '👁️';
-});
 
 function showAlert(message, type = 'danger') {
   alertBox.innerHTML = `<div class="alert alert-${type}"><span>${message}</span></div>`;

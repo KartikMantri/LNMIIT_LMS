@@ -86,7 +86,7 @@ async function loadUsers() {
   if (users.length === 0) {
     table.style.display = 'none';
     loader.style.display = 'block';
-    loader.innerHTML = `<div class="empty-icon">📭</div><p>No users found matching your criteria.</p>`;
+    loader.innerHTML = `<div class="empty-icon"></div><p>No users found matching your criteria.</p>`;
     paginationInfo.textContent = 'Showing 0 of 0 users';
     paginationEl.innerHTML = '';
     return;
@@ -117,8 +117,8 @@ async function loadUsers() {
         </td>
         <td>
           <div style="display:flex;gap:6px;">
-            <a href="user-detail?id=${u._id}" class="btn btn-secondary btn-sm" title="View details">👁️ View</a>
-            <button class="btn btn-danger btn-sm" title="Delete user" onclick="openDeleteModal('${u._id}', '${u.name}', '${u.role}')" ${u.role === 'admin' ? 'disabled' : ''}>🗑️</button>
+            <a href="user-detail?id=${u._id}" class="btn btn-secondary btn-sm" title="View details">View</a>
+            <button class="btn btn-danger btn-sm" title="Delete user" onclick="openDeleteModal('${u._id}', '${u.name}', '${u.role}')" ${u.role === 'admin' ? 'disabled' : ''}>Del</button>
           </div>
         </td>
       </tr>

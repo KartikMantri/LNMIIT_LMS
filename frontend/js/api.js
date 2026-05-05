@@ -78,13 +78,10 @@ const API = {
   // Auth
   register: (body)         => apiFetch('/users/register', { method: 'POST', body: JSON.stringify(body) }),
   login:    (body)         => apiFetch('/users/login',    { method: 'POST', body: JSON.stringify(body) }),
-  logout:   ()             => apiFetch('/users/logout',   { method: 'POST' }),
 
   // Profile
   getMyProfile:   ()       => apiFetch('/users/me'),
   updateProfile:  (body)   => apiFetch('/users/me', { method: 'PUT', body: JSON.stringify(body) }),
-  changePassword: (body)   => apiFetch('/users/change-password', { method: 'PUT', body: JSON.stringify(body) }),
-
   // Admin — User Management
   getAllUsers:     (params) => apiFetch(`/users?${new URLSearchParams(params)}`),
   getUserById:    (id)     => apiFetch(`/users/${id}`),
@@ -107,7 +104,7 @@ function showToast(message, type = 'info') {
     document.body.appendChild(container);
   }
 
-  const icons = { success: '✅', danger: '❌', warning: '⚠️', info: 'ℹ️' };
+  const icons = { success: '✓', danger: '✕', warning: '!', info: 'i' };
   const colors = {
     success: 'rgba(52,211,153,0.12)',
     danger:  'rgba(248,113,113,0.12)',
@@ -132,9 +129,9 @@ function showToast(message, type = 'info') {
 // --- Role Badge Helper ---
 function roleBadge(role) {
   const map = {
-    student: '<span class="badge badge-student">🎓 Student</span>',
-    faculty: '<span class="badge badge-faculty">👨‍🏫 Faculty</span>',
-    admin:   '<span class="badge badge-admin">⚡ Admin</span>',
+    student: '<span class="badge badge-student">Student</span>',
+    faculty: '<span class="badge badge-faculty">Faculty</span>',
+    admin:   '<span class="badge badge-admin">Admin</span>',
   };
   return map[role] || `<span class="badge">${role}</span>`;
 }
@@ -142,8 +139,8 @@ function roleBadge(role) {
 // --- Status Badge Helper ---
 function statusBadge(isActive) {
   return isActive
-    ? '<span class="badge badge-active">● Active</span>'
-    : '<span class="badge badge-inactive">● Inactive</span>';
+    ? '<span class="badge badge-active">Active</span>'
+    : '<span class="badge badge-inactive">Inactive</span>';
 }
 
 // --- Initials Helper ---
