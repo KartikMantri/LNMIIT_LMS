@@ -89,4 +89,9 @@ Now, open your browser and navigate to `http://localhost:3000/login` to access t
 ---
 
 ## 🤝 Contributing
-Since this is a specific module for the LNMIIT Library Management System, ensure that any UI changes strictly adhere to the predefined CSS design tokens in `frontend/css/style.css` to maintain the premium aesthetic.
+Since this is a specific module for the LNMIIT Library Management System, Its contributors include
+```
+Aarohi Sinha, 
+Nandini Sharma, 
+Garv Jain
+```
