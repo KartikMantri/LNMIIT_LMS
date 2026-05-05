@@ -1,6 +1,6 @@
-# LNMIIT Library Management System 📚
+# LNMIIT Library Management System
 
-A modern, responsive, and fully featured Library User Management module built for LNMIIT. This project handles role-based authentication, user profiles, and administrative control over book issuances, utilizing a sleek design system.
+A modern, responsive, and fully featured Library User Management module built for LNMIIT. This project handles role-based authentication, user profiles, and administrative control over book issuances, utilizing a strict minimalist monochrome design system.
 
 ## 🚀 Features
 
@@ -13,7 +13,6 @@ A modern, responsive, and fully featured Library User Management module built fo
 ### User Dashboard & Profiles
 * **Dynamic Profiles:** Users can view their personal details, ID numbers, and track their currently issued books.
 * **Profile Management:** Students and Faculty can update their contact details (Phone, Address).
-* **Password Management:** Secure password change functionality.
 
 ### Admin Book Issuance System
 * **Admin-Exclusive Issuance:** To maintain library integrity, only Admins can issue books to users via the User Management Dashboard.
@@ -22,9 +21,9 @@ A modern, responsive, and fully featured Library User Management module built fo
 * **Status Overrides:** Admins have a direct dropdown UI to manually mark books as `Returned`.
 
 ### UI/UX Highlights
-* **Premium Design System:** Glassmorphism, tailored color palettes, and smooth micro-animations.
-* **Universal Dark/Light Mode:** A persistent theme toggle (☀️/🌙) available on every page, remembering user preferences via `localStorage`.
-* **Toast Notifications:** Clean, non-intrusive feedback alerts for all user actions.
+* **Minimalist Design System:** Strict monochrome black and white theme with no decorative emojis or distracting colors.
+* **Clean Interface:** Focuses entirely on usability, readability, and content delivery.
+* **Toast Notifications:** Clean, text-based feedback alerts for all user actions.
 * **Fully Responsive:** Adapts perfectly to mobile, tablet, and desktop screens.
 
 ---
