@@ -46,16 +46,21 @@ function validate() {
   const userId   = document.getElementById('userId').value.trim();
   const password = document.getElementById('password').value;
   const confirm  = document.getElementById('confirmPassword').value;
+  const phone    = document.getElementById('phone').value.trim();
+
+  const isPhoneValid = !phone || /^\d{10}$/.test(phone);
 
   setError('name-error',     !name);
   setError('email-error',    !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
   setError('role-error',     !role);
   setError('userid-error',   (role === 'student' || role === 'faculty') && !userId);
+  setError('phone-error',    !isPhoneValid);
   setError('password-error', !password || password.length < 6);
   setError('confirm-error',  !confirm || password !== confirm);
 
   if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !role
     || ((role === 'student' || role === 'faculty') && !userId)
+    || !isPhoneValid
     || !password || password.length < 6
     || password !== confirm) {
     valid = false;

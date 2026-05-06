@@ -32,7 +32,8 @@ const UserSchema = new mongoose.Schema({
   },
   phone: {
     type: String,
-    trim: true
+    trim: true,
+    match: [/^\d{10}$/, 'Please enter a valid 10-digit phone number']
   },
   address: {
     type: String,
@@ -58,7 +59,7 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 // Hash password before saving
-UserSchema.pre('save', async function(next) {
+UserSchema.pre('save', async function (next) {
   if (!this.isModified('password')) return next();
   try {
     const salt = await bcrypt.genSalt(12);
@@ -70,7 +71,7 @@ UserSchema.pre('save', async function(next) {
 });
 
 // Method to compare entered password with hashed password
-UserSchema.methods.matchPassword = async function(enteredPassword) {
+UserSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
