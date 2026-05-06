@@ -4,16 +4,18 @@ const User = require('../models/User');
 
 // Helper to generate JWT token
 const generateToken = (id) => {
+  //When a user logs in or registers successfully, this generates a digital "ID card" (a JWT) valid for 24 hours. The frontend uses this card to prove who they are on future requests.
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '24h',
   });
+
 };
 
-// Helper to check and update overdue books
+// Helper to check and update overdue books (pending -> late fees)
 const checkAndUpdateOverdueBooks = async (user) => {
   let isChanged = false;
   const now = new Date();
-  
+
   if (user.issuedBooks && user.issuedBooks.length > 0) {
     user.issuedBooks.forEach(book => {
       if (book.status === 'pending' && new Date(book.returnDate) < now) {
@@ -32,20 +34,19 @@ const checkAndUpdateOverdueBooks = async (user) => {
 // @desc    Register a new user
 // @route   POST /api/users/register
 // @access  Public
+
 const registerUser = async (req, res) => {
   try {
     const { name, userId, email, password, role, phone } = req.body;
 
     // Admin accounts must be created by another Admin (unless it's the very first user)
-    // For this module scope, let's assume we can register admins via postman or a secret setup route.
-    // We will allow registration of student and faculty publicly as per the PRD updated specs.
 
     if (!name || !userId || !email || !password || !role) {
       return res.status(400).json({ success: false, message: 'Please provide all required fields' });
     }
 
-    const userExists = await User.findOne({ 
-      $or: [{ email: email.toLowerCase() }, { userId: userId.toLowerCase() }] 
+    const userExists = await User.findOne({
+      $or: [{ email: email.toLowerCase() }, { userId: userId.toLowerCase() }]
     });
 
     if (userExists) {
@@ -53,12 +54,14 @@ const registerUser = async (req, res) => {
     }
 
     const user = await User.create({
+
       name,
       userId: userId.toLowerCase(),
       email: email.toLowerCase(),
       password,
       role,
       phone
+
     });
 
     if (user) {
@@ -156,11 +159,10 @@ const updateMyProfile = async (req, res) => {
       user.name = req.body.name || user.name;
       user.phone = req.body.phone || user.phone;
       user.address = req.body.address || user.address;
-      
-      // We don't allow changing email or userId freely here
-      
+
+
       const updatedUser = await user.save();
-      
+
       res.json({
         success: true,
         message: 'Profile updated successfully',
@@ -243,7 +245,7 @@ const issueBookForUser = async (req, res) => {
 const getUsers = async (req, res) => {
   try {
     const { page = 1, limit = 10, role, isActive, sort = '-createdAt' } = req.query;
-    
+
     const query = {};
     if (role) query.role = role;
     if (isActive !== undefined && isActive !== '') query.isActive = isActive === 'true';
@@ -257,7 +259,7 @@ const getUsers = async (req, res) => {
 
     const count = await User.countDocuments(query);
 
-    // Automatically check and update overdue books for the current page of users
+    // Automatically check and update overdue books for the current users present in the page
     for (let u of users) {
       await checkAndUpdateOverdueBooks(u);
     }
@@ -302,16 +304,16 @@ const updateUser = async (req, res) => {
       user.name = req.body.name || user.name;
       user.phone = req.body.phone || user.phone;
       user.address = req.body.address || user.address;
-      
+
       if (req.user.role === 'admin') {
         user.role = req.body.role || user.role;
         if (req.body.isActive !== undefined) {
-           user.isActive = req.body.isActive;
+          user.isActive = req.body.isActive;
         }
       }
 
       const updatedUser = await user.save();
-      
+
       res.json({ success: true, message: 'User updated successfully', user: updatedUser });
     } else {
       res.status(404).json({ success: false, message: 'User not found' });
@@ -346,7 +348,7 @@ const deleteUser = async (req, res) => {
   try {
     // Check if trying to delete self
     if (req.user._id.toString() === req.params.id) {
-       return res.status(400).json({ success: false, message: 'Cannot delete your own admin account' });
+      return res.status(400).json({ success: false, message: 'Cannot delete your own admin account' });
     }
 
     const user = await User.findByIdAndDelete(req.params.id);

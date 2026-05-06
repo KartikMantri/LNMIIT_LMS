@@ -8,13 +8,19 @@ if (Auth.isLoggedIn()) {
     : '/profile.html';
 }
 
-const form        = document.getElementById('login-form');
-const loginBtn    = document.getElementById('login-btn');
-const btnText     = document.getElementById('btn-text');
-const btnSpinner  = document.getElementById('btn-spinner');
-const alertBox    = document.getElementById('alert-box');
-const togglePwd   = document.getElementById('toggle-password');
-const pwdInput    = document.getElementById('password');
+const form = document.getElementById('login-form');
+
+const loginBtn = document.getElementById('login-btn');
+
+const btnText = document.getElementById('btn-text');
+
+const btnSpinner = document.getElementById('btn-spinner');
+
+const alertBox = document.getElementById('alert-box');
+
+const togglePwd = document.getElementById('toggle-password');
+
+const pwdInput = document.getElementById('password');
 
 // Toggle password visibility
 togglePwd.addEventListener('click', () => {
@@ -32,16 +38,21 @@ function clearAlert() { alertBox.innerHTML = ''; }
 // Validate fields
 function validate() {
   let valid = true;
+
   const userId = document.getElementById('userId').value.trim();
-  const pwd   = pwdInput.value;
+
+  const pwd = pwdInput.value;
 
   const userIdErr = document.getElementById('userid-error');
-  const pwdErr   = document.getElementById('password-error');
+
+  const pwdErr = document.getElementById('password-error');
 
   if (!userId) {
+
     document.getElementById('userId').classList.add('is-invalid');
     userIdErr.classList.add('show');
     valid = false;
+
   } else {
     document.getElementById('userId').classList.remove('is-invalid');
     userIdErr.classList.remove('show');
